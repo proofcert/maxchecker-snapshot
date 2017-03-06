@@ -1,0 +1,11 @@
+(* Let users write in user terms and transform? *)
+type t =
+| And of t * t                 (* &= *)
+| Singleton of t               (* $1 *)
+| OrPositive of Choice.t * t   (* !+= *)
+| Exists of Lkf_term.t * t     (* e= *)
+| Forall of (Lkf_term.t -> t)  (* a= *)
+| End                          (* $ *)
+| Index of Index.t * t         (* idx= *)
+| Initial of Index.t           (* $i *)
+| Cut of Lkf_formula.t * t * t (* c= *)
